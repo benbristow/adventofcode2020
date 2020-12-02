@@ -1,16 +1,14 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Reflection;
+using AdventCode.Shared;
 
 namespace AdventCode1
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var file = ReadFile();
-            var numbers = file.Split(Environment.NewLine).Select(int.Parse).ToArray();
+            var numbers = AdventCodeHelpers.ReadInputFile().Select(int.Parse).ToArray();
 
             Console.WriteLine(Part1(numbers));
             Console.WriteLine(Part2(numbers));
@@ -40,17 +38,6 @@ namespace AdventCode1
             var combination = combinations.Single(x => x.Item1 + x.Item2 + x.Item3 == 2020);
 
             return combination.Item1 * combination.Item2 * combination.Item3;
-        }
-
-        private static string ReadFile()
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith("numbers.txt"));
-
-            using var stream = assembly.GetManifestResourceStream(resourceName);
-            using var reader = new StreamReader(stream);
-            
-            return reader.ReadToEnd();
         }
     }
 }

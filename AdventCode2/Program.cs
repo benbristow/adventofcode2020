@@ -1,24 +1,23 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
+using AdventCode.Shared;
 
 namespace AdventCode2
 {
-    class Program
+    public static class Program
     {
         private struct Puzzle
         {
             public int Selector1;
             public int Selector2;
-            public char Character; 
+            public char Character;
             public string Value;
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var passwords = ReadFile().Split(Environment.NewLine).Select(ParsePuzzle).ToList();
+            var passwords = AdventCodeHelpers.ReadInputFile().Select(ParsePuzzle).ToList();
 
             Console.WriteLine(passwords.Where(IsValidPasswordPart1).Count());
             Console.WriteLine(passwords.Where(IsValidPasswordPart2).Count());
@@ -46,17 +45,6 @@ namespace AdventCode2
                 Character = match.Groups[3].Value[0],
                 Value = match.Groups[4].Value
             };
-        }
-
-        private static string ReadFile()
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith("input.txt"));
-
-            using var stream = assembly.GetManifestResourceStream(resourceName);
-            using var reader = new StreamReader(stream);
-
-            return reader.ReadToEnd();
         }
     }
 }
