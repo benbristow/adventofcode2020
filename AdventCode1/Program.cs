@@ -2,9 +2,9 @@
 using System.Linq;
 using AdventCode.Shared;
 
-namespace AdventCode
+namespace AdventCode1
 {
-    public static class AdventCode1
+    public static class Program
     {
         public static void Main(string[] args)
         {

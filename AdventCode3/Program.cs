@@ -2,11 +2,10 @@
 using System.Linq;
 using System.Numerics;
 using AdventCode.Shared;
-using AdventCode3;
 
-namespace AdventCode
+namespace AdventCode3
 {
-    public static class AdventCode3
+    public static class Program
     {
         public static void Main(string[] args)
         {
