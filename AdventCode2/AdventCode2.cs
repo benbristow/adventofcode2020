@@ -3,9 +3,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using AdventCode.Shared;
 
-namespace AdventCode2
+namespace AdventCode
 {
-    public static class Program
+    public static class AdventCode2
     {
         private struct Puzzle
         {
