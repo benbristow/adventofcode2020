@@ -33,7 +33,7 @@ namespace AdventCode8
                     var inverseOperation = instruction.Operation == Operation.Jmp ? Operation.Nop : Operation.Jmp;
 
                     var newInstructions = instructions.ToList();
-                    newInstructions[i] = new Instruction() {Operation = inverseOperation, Argument = instruction.Argument};
+                    newInstructions[i] = new Instruction() { Operation = inverseOperation, Argument = instruction.Argument };
 
                     var (pointer, accumulator) = ExecuteProgram(newInstructions);
 

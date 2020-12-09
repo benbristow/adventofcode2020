@@ -16,12 +16,7 @@ namespace AdventCode1
 
         private static int Part1(int[] numbers)
         {
-            var combinations = (from item in numbers
-                from item2 in numbers
-                where item < item2
-                select new Tuple<int, int>(item, item2)).ToList();
-
-            var combination = combinations.Single(x => x.Item1 + x.Item2 == 2020);
+            var combination = AdventCodeHelpers.GetCombinations(numbers).Single(x => x.Item1 + x.Item2 == 2020);
 
             return combination.Item1 * combination.Item2;
         }
