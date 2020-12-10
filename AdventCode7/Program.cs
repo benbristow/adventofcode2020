@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -17,12 +18,9 @@ namespace AdventCode7
         
         public List<Bag> SupportedBags { get; } = new List<Bag>();
 
-        public void AddDependentBag(Bag bag)
+        public void AddDependentBags(IEnumerable<Bag> bags)
         {
-            if (!SupportedBags.Contains(bag))
-            {
-                SupportedBags.Add(bag);
-            }
+            SupportedBags.AddRange(bags.Where(x => !SupportedBags.Contains(x)));
         }
     }
     
@@ -80,10 +78,7 @@ namespace AdventCode7
                 var dependencyMatches = Regex.Matches(x, @"(\d) (.+?) bag");
 
                 var bag = FindOrCreateBag(currentBagMatch.Groups[1].Value);
-                foreach (Match y in dependencyMatches)
-                {
-                    bag.AddDependentBag(FindOrCreateBag(y.Groups[2].Value));
-                }
+                bag.AddDependentBags(dependencyMatches.Select(y => FindOrCreateBag(y.Groups[2].Value)));
             }
             
             return bags;
