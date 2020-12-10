@@ -9,7 +9,7 @@ namespace AdventCode9
     {
         private const int Preamble = 25;
         
-        public static void Main(string[] args)
+        public static void Main()
         {
             var input = AdventCodeHelpers.ReadInputFile().Select(long.Parse).ToList();
 

@@ -14,7 +14,7 @@ namespace AdventCode.Shared
             var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith("input.txt"));
 
             using var stream = assembly.GetManifestResourceStream(resourceName);
-            using var reader = new StreamReader(stream);
+            using var reader = new StreamReader(stream!);
 
             return reader.ReadToEnd().Split(Environment.NewLine);
         }
